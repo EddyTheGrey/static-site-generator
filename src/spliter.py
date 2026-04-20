@@ -113,19 +113,7 @@ def text_to_textnodes(text):
     nodes = split_nodes_link(nodes)
     return nodes
 
-def markdown_to_blocks(markdown):
-    '''
-    Converts a markdown string into a list of blocks, where each block is a list of TextNodes.
-    '''
-    # Split the markdown into lines and process each line separately
-    lines = markdown.split("\n\n")
-    blocks = []
-    for line in lines:
-        if line.strip() == "":
-            continue  # Skip empty lines
-        blocks.append(line.strip("\n"))
-    print(blocks)
-    return blocks
+
 
 
 
