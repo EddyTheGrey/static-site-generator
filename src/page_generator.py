@@ -22,9 +22,11 @@ def generate_page(from_path, template_path, dest_path, base_url="/"):
     nodes = markdown_to_html_node(markdown)
     html_string = nodes.to_html()
     title = extract_title(markdown)
-    template = template.replace("{{ Content }}", html_string).replace("src=\"/\"", "src=\"" + base_url + "\"" ).replace("href=\"/\"", "href=\"" + base_url + "\"" )
-    template = template.replace("{{ Title }}", title).replace("src=\"/\"", "src=\"" + base_url + "\"" ).replace("href=\"/\"", "href=\"" + base_url + "\"" )
-    
+
+    template = template.replace("{{ Content }}", html_string)
+    template = template.replace("{{ Title }}", title)
+    template = template.replace('src="/', f'src="{base_url}')
+    template = template.replace('href="/', f'href="{base_url}"')
     with open(dest_path, 'w') as f:
         f.write(template)
     
